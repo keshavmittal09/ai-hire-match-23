@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
-import { Upload, X, Plus, TrendingUp } from 'lucide-react';
+import { Upload, X, Plus, TrendingUp, Linkedin, Github, Twitter, Instagram, Globe, Phone } from 'lucide-react';
 import { ScoreBadge } from '@/components/ScoreBadge';
 
 export const CandidateDashboard = () => {
@@ -19,7 +19,15 @@ export const CandidateDashboard = () => {
     summary: 'Passionate about building scalable systems',
     skills: ['Python', 'PostgreSQL', 'Docker'],
     availability: 'immediate',
-    desiredSalary: '80000-120000'
+    desiredSalary: '80000-120000',
+    phone: '',
+    bio: '',
+    linkedin_url: '',
+    github_url: '',
+    twitter_url: '',
+    instagram_url: '',
+    portfolio_url: '',
+    website_url: ''
   });
   
   const [newSkill, setNewSkill] = useState('');
@@ -196,6 +204,30 @@ export const CandidateDashboard = () => {
               </div>
 
               <div className="space-y-2">
+                <Label htmlFor="phone">Phone</Label>
+                <div className="flex gap-2 items-center">
+                  <Phone className="w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="phone"
+                    value={profile.phone}
+                    onChange={(e) => setProfile(prev => ({ ...prev, phone: e.target.value }))}
+                    placeholder="+1 (555) 000-0000"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="bio">Bio / About Me</Label>
+                <Textarea
+                  id="bio"
+                  value={profile.bio}
+                  onChange={(e) => setProfile(prev => ({ ...prev, bio: e.target.value }))}
+                  placeholder="Tell us more about yourself, your interests, and career goals..."
+                  rows={3}
+                />
+              </div>
+
+              <div className="space-y-2">
                 <Label>Skills</Label>
                 <div className="flex gap-2 mb-2">
                   <Input
@@ -257,6 +289,101 @@ export const CandidateDashboard = () => {
                 disabled={isSaving}
               >
                 {isSaving ? 'Saving...' : 'Save Profile'}
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Social Media & Links */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Social Media & Links</CardTitle>
+              <CardDescription>Connect your professional and social profiles</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="linkedin">LinkedIn</Label>
+                <div className="flex gap-2 items-center">
+                  <Linkedin className="w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="linkedin"
+                    value={profile.linkedin_url}
+                    onChange={(e) => setProfile(prev => ({ ...prev, linkedin_url: e.target.value }))}
+                    placeholder="https://linkedin.com/in/yourprofile"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="github">GitHub</Label>
+                <div className="flex gap-2 items-center">
+                  <Github className="w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="github"
+                    value={profile.github_url}
+                    onChange={(e) => setProfile(prev => ({ ...prev, github_url: e.target.value }))}
+                    placeholder="https://github.com/yourusername"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="twitter">Twitter / X</Label>
+                <div className="flex gap-2 items-center">
+                  <Twitter className="w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="twitter"
+                    value={profile.twitter_url}
+                    onChange={(e) => setProfile(prev => ({ ...prev, twitter_url: e.target.value }))}
+                    placeholder="https://twitter.com/yourusername"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="instagram">Instagram</Label>
+                <div className="flex gap-2 items-center">
+                  <Instagram className="w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="instagram"
+                    value={profile.instagram_url}
+                    onChange={(e) => setProfile(prev => ({ ...prev, instagram_url: e.target.value }))}
+                    placeholder="https://instagram.com/yourusername"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="portfolio">Portfolio</Label>
+                <div className="flex gap-2 items-center">
+                  <Globe className="w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="portfolio"
+                    value={profile.portfolio_url}
+                    onChange={(e) => setProfile(prev => ({ ...prev, portfolio_url: e.target.value }))}
+                    placeholder="https://yourportfolio.com"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="website">Personal Website</Label>
+                <div className="flex gap-2 items-center">
+                  <Globe className="w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="website"
+                    value={profile.website_url}
+                    onChange={(e) => setProfile(prev => ({ ...prev, website_url: e.target.value }))}
+                    placeholder="https://yourwebsite.com"
+                  />
+                </div>
+              </div>
+
+              <Button 
+                onClick={handleSaveProfile} 
+                className="w-full"
+                disabled={isSaving}
+              >
+                {isSaving ? 'Saving...' : 'Save Links'}
               </Button>
             </CardContent>
           </Card>

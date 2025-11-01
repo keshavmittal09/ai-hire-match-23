@@ -36,7 +36,13 @@ export interface Candidate {
   availability?: string;
   linkedin_url?: string;
   github_url?: string;
+  twitter_url?: string;
+  instagram_url?: string;
+  portfolio_url?: string;
+  website_url?: string;
   avatar?: string;
+  phone?: string;
+  bio?: string;
 }
 
 export interface Experience {
